@@ -4,8 +4,6 @@
 
 [参考资料lvt4j](https://lvt4j.51vip.biz/confluence/#all-updates)
 
-[系统相关技术书籍](https://confluence.inner.youdao.com/pages/viewpage.action?pageId=86891803)
-
 ## Run
 
 需要前置Rust开发环境
