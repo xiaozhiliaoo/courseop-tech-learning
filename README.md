@@ -18,7 +18,7 @@ mdbook build
 
 mdbook serve  
 
-[本地访问地址](http://localhost:3000/)
+本地访问地址：http://localhost:3000/
 
 
 
