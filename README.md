@@ -1,8 +1,12 @@
 # courseop-tech-learning
 
+教务技术学习笔记
+
 ## 技术学习笔记
 
-[参考资料lvt4j](https://lvt4j.51vip.biz/confluence/#all-updates)
+访问地址：[courseop-tech-learning](https://xiaozhiliaoo.github.io/courseop-tech-learning/)
+
+Inspired By [lvt4j](https://lvt4j.51vip.biz/confluence/#all-updates)
 
 ## Run
 
@@ -16,11 +20,9 @@ mdbook clean
 
 mdbook build
 
-mdbook serve  
+mdbook serve
 
 本地访问地址：http://localhost:3000/
-
-
 
 ## TODO
 
