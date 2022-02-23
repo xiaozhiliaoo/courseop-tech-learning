@@ -1,5 +1,12 @@
 # Consul简介
 
+Consul is a service mesh solution providing a full featured control plane with service discovery, configuration, 
+and segmentation functionality. 
+
+Hashicorp：delivers consistent workflows to provision, secure, connect, and run any infrastructure for any application.
+
+## 提供的新架构，解决方案
+
 
 
 ## FAQ

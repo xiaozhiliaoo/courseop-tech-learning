@@ -5,6 +5,15 @@
 [参考资料lvt4j](https://lvt4j.51vip.biz/confluence/#all-updates)
 
 
+## 技术关键字
+
+Akka:Reactive Architecture
+
+Kafka:Streaming Processing Platform
+
+SMACK:Spark/Mesos/Akka/Cassandra/Kafka
+
+
 
 ## 技术学习笔记
 

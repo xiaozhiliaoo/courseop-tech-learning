@@ -1,5 +1,26 @@
 # Kafka简介
 
+Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance
+data pipelines, streaming analytics, data integration, and mission-critical applications.
+
+Confluent: Set Your Data in Motion
+
+Confluent is creating the foundational platform for data-in-motion
+
+## 提供的新架构，解决方案
+
+事件流处理平台
+
+事件处理
+
+
+## 上次学到这里
+
+Event Streaming Patterns：https://developer.confluent.io/patterns/event/event/
+
+inside-ksqldb：https://developer.confluent.io/learn-kafka/inside-ksqldb/streaming-architecture/
+
+
 ## 笔记
 
 ### Kafka
@@ -108,11 +129,29 @@ acks(0,1,all)
 
 ## 设计
 
+https://docs.confluent.io/platform/current/kafka/design.html
+
 ## 实现
 
+
+## FAQ
+
+https://developer.confluent.io/learn/apache-kafka-faqs/
 
 
 ## 其他
 
 [Kafka vs. Pulsar vs. RabbitMQ](https://www.confluent.io/kafka-vs-pulsar/)
 
+[Kafka Stream vs Flink](https://www.confluent.io/blog/apache-flink-apache-kafka-streams-comparison-guideline-users/)
+
+The Streams API in Kafka and Flink are used in both capacities. The main distinction lies in where these applications 
+live — as jobs in a central cluster (Flink), or inside microservices (Streams API).
+
+
+The Streams API makes stream processing accessible as an application programming model, that applications built as 
+microservices can avail from, and benefits from Kafka’s core competency —performance, scalability, security, reliability
+and soon, end-to-end exactly-once — due to its tight integration with core abstractions in Kafka. Flink, on the other 
+hand, is a great fit for applications that are deployed in existing clusters and benefit from throughput, latency, event 
+time semantics, savepoints and operational features, exactly-once guarantees for application state, end-to-end
+exactly-once guarantees (except when used with Kafka as a sink today), and batch processing.

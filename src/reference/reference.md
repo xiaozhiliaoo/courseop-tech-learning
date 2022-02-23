@@ -2,7 +2,9 @@
 
 # Akka 
 
-优先看：https://doc.akka.io/docs/akka/current/
+优先看：https://academy.lightbend.com/
+
+其次：https://doc.akka.io/docs/akka/current/
 
 Akka	响应式架构	https://book.douban.com/subject/26829063/	
 
@@ -22,6 +24,10 @@ https://developer.lightbend.com/docs/akka-platform-guide/index.html
 
 使用akka开发微服务：https://developer.lightbend.com/docs/akka-platform-guide/microservices-tutorial/index.html
 
+lightbend academy: https://academy.lightbend.com/courses
+
+EBOOK: https://www.lightbend.com/akka-platform/resources
+
 # Consul
 
 官方文档 https://www.consul.io/docs
@@ -29,6 +35,8 @@ https://developer.lightbend.com/docs/akka-platform-guide/index.html
 生态：https://www.hashicorp.com/
 
 # Hazelcast
+
+优先看：https://training.hazelcast.com/
 
 官方文档 https://hazelcast.org/imdg/docs/
 
@@ -48,7 +56,11 @@ Mastering Hazelcast https://odoepner.files.wordpress.com/2015/04/mastering_hazel
 
 # Jackson
 
+https://github.com/FasterXML/jackson-docs
 
+https://github.com/FasterXML/jackson
+
+https://github.com/FasterXML
 
 # ElasticSearch
 
@@ -91,6 +103,8 @@ Kafka权威指南	https://book.douban.com/subject/27665114/
 Kafka Streams实战	https://book.douban.com/subject/33425155/	
 
 官方文档	https://kafka.apache.org/documentation/#gettingStarted
+
+https://jaceklaskowski.gitbooks.io/mastering-kafka-streams/content/
 
 # Canal
 Canal	官方文档	https://github.com/alibaba/canal	
