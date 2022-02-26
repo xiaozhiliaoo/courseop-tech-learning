@@ -2,7 +2,7 @@
 
 我的技术笔记
 
-[参考资料lvt4j](https://lvt4j.51vip.biz/confluence/#all-updates)
+Inspired by [**lvt4j**](https://lvt4j.51vip.biz/confluence/#all-updates) and reference from.
 
 
 ## 技术关键字
@@ -15,7 +15,7 @@ SMACK:Spark/Mesos/Akka/Cassandra/Kafka
 
 
 
-## 技术学习笔记
+## 技术栈
 
 | 后端                                                         | 前端                                                         | 程度 |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ---- |

@@ -13,6 +13,7 @@ at the edge or as a fully managed cloud service.
 
 Bridging Between Java 8 Streams and Hazelcast Jet
 
+In-Memory Storage/In-Memory Compute/Real-Time Processing
 
 
 ## Paper
