@@ -155,3 +155,9 @@ and soon, end-to-end exactly-once — due to its tight integration with core abs
 hand, is a great fit for applications that are deployed in existing clusters and benefit from throughput, latency, event 
 time semantics, savepoints and operational features, exactly-once guarantees for application state, end-to-end
 exactly-once guarantees (except when used with Kafka as a sink today), and batch processing.
+
+
+## 疑问
+
+kafka一个topic多个消费组情况下，broker是怎么管理log的offset的呢，是每一个消费组提交自己的呢，还是共同提交？
+
