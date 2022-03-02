@@ -64,5 +64,6 @@
     - [aws](./chapter_15/aws.md)
     - [aliyun](./chapter_15/aliyun.md)
     - [Replication](./chapter_15/Replication.md)
+    - [Network Partition](./chapter_15/Network-partition.md)
 - [参考资料](./reference/reference.md)
     - [参考资料](./reference/reference.md)
