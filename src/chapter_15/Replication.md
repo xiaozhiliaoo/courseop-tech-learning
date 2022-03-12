@@ -7,6 +7,8 @@ Replication in database,kv,document-db,column-db,file system, distributed coordi
 
 Replication Model https://en.wikipedia.org/wiki/Replication_(computing)
 
+Consistency Model https://en.wikipedia.org/wiki/Consistency_model
+
 Consistency Model https://jepsen.io/consistency
 
 ## Database
@@ -37,6 +39,7 @@ mongodb https://docs.mongodb.com/manual/replication/
 
 couchdb https://docs.couchdb.org/en/stable/replication/intro.html
 
+
 ## Framework
 
 hazelcast  https://docs.hazelcast.com/imdg/4.2/consistency-and-replication/consistency
@@ -63,6 +66,8 @@ activemq https://activemq.apache.org/clustering
 ## Search
 
 elasticsearch https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery.html
+
+solr https://solr.apache.org/guide/6_6/index-replication.html
 
 ## File System
 
@@ -101,6 +106,12 @@ Yahoo PNUTS
 VoltDB https://docs.voltdb.com/UsingVoltDB/ChapReplication.php
 
 ScyllaDB https://docs.scylladb.com/architecture/
+
+foundationdb: https://apple.github.io/foundationdb/consistency.html
+https://apple.github.io/foundationdb/fault-tolerance.html
+
+
+
 
 | Application | Replication Model | Consistency Model |
 | ----------- | ----------------- | ----------------- |

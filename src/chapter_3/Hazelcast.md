@@ -30,6 +30,10 @@ membership具体细节，如何加入和如何退出，以及数据迁移细节�
 
 Build Distributed System
 
+Core Object：Config,DistributedObject,Node,NodeState,Cluster,HazelcastInstance
+
+FD:PhiAccrualFailureDetector,PhiAccrualClusterFailureDetector,DeadlineClusterFailureDetector,PingFailureDetector
+
 
 ## Paper
 

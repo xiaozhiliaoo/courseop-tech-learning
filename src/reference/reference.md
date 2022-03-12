@@ -45,9 +45,13 @@ EBOOK: https://www.lightbend.com/akka-platform/resources
 
 优先看：https://training.hazelcast.com/
 
-官方文档 https://hazelcast.org/imdg/docs/
+官方文档IMDG https://hazelcast.org/imdg/docs/
 
 https://docs.hazelcast.com/imdg/latest/getting-started.html
+
+hazelcast文档：https://docs.hazelcast.com/hazelcast/5.1/
+
+hazelcast mc文档：https://docs.hazelcast.com/management-center/latest/getting-started/overview
 
 代码示例：https://github.com/hazelcast/hazelcast-code-samples
 
