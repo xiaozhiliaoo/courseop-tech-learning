@@ -38,6 +38,8 @@ consul  https://www.consul.io/docs/architecture
 mongodb https://docs.mongodb.com/manual/replication/
 
 couchdb https://docs.couchdb.org/en/stable/replication/intro.html
+https://guide.couchdb.org/editions/1/en/replication.html
+
 
 
 ## Framework

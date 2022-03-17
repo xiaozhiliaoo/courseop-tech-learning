@@ -35,6 +35,11 @@ Core Object：Config,DistributedObject,Node,NodeState,Cluster,HazelcastInstance
 FD:PhiAccrualFailureDetector,PhiAccrualClusterFailureDetector,DeadlineClusterFailureDetector,PingFailureDetector
 
 
+## Starter
+
+https://docs.hazelcast.com/hazelcast/5.1/pipelines/spring-boot
+
+
 ## Paper
 
 [Phi Accrual Failure Detector](https://www.computer.org/csdl/proceedings-article/srds/2004/22390066/12OmNvT2phv)

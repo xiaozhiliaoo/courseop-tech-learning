@@ -75,6 +75,10 @@ https://github.com/FasterXML
 
 # ElasticSearch
 
+优先看oreilly出版的《ElasticSearch权威指南》  
+中文版：https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html(中文有些esquery写的不对，需要辅助英文的看)
+英文版：https://www.elastic.co/guide/en/elasticsearch/guide/master/index.html
+
 https://www.elastic.co/guide/index.html
 
 ElasticSearch Elasticsearch源码解析与优化实战    https://book.douban.com/subject/30386800/

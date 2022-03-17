@@ -4,8 +4,7 @@
 
 ## 学习进度
 
-看到这里了：https://www.elastic.co/guide/cn/elasticsearch/guide/current/routing-value.html
-
+看到这里了：https://www.elastic.co/guide/cn/elasticsearch/guide/current/full-text-search.html
 
 
 ## 笔记
@@ -51,22 +50,84 @@ filed:精确值，全文值
 
 很少对全文类型的域做精确匹配
 
+Doc Values:排序，聚合，脚本计算
+Invert Index:检索
 
+文档的唯一性：index，type，routing value
 
+检索过程：query then fetch 先查后取
+分片节点：from+size
+协调节点：numberOfShard * (from+size)
 
+scroll 查询禁用排序
 
+搜索类型：query then fetch，dfs_query_then_fetch
 
-
-
-
-
-
-
-
+深度分页的代价根源是结果集全局排序，如果去掉全局排序的特性的话查询结果的成本就会很低。
 
 Data Replication:Primary-Backup
 
 in-sync shard（可以被选中为primary的shard）
+
+index配置最重要的是：number_of_shards(创建后更改不了)，number_of_replicas(创建后可以修改)
+
+_id 和 _index 字段则既没有被索引也没有被存储，这意味着它们并不是真实存在的。
+
+不能添加新的分析器或者对现有的字段做改动。 如果你那么做的话，结果就是那些已经被索引的数据就不正确， 搜索也不能正常工作。reindex
+
+修改索引类型：https://www.elastic.co/guide/cn/elasticsearch/guide/current/index-aliases.html
+
+应用中使用索引别名，而不是索引真实名字。这样在修改索引时候，应用层不需要变化。
+
+全文检索=全字段索引
+
+倒排索引被写入磁盘后是 不可改变 的
+在保留不变性的前提下实现倒排索引的更新？答案是: 用更多的索引。
+
+一个 Lucene 索引包含一个提交点和三个段
+
+一个 Lucene 索引 我们在 Elasticsearch 称作 分片 。 一个 Elasticsearch 索引 是分片的集合
+
+段是不可改变的
+
+内存索引缓冲区
+
+按段搜索
+
+写入和打开一个新段的轻量的过程叫做 refresh，每1s refresh下
+
+Elasticsearch是近实时搜索: 文档的变化并不是立即对搜索可见，但会在一秒之内变为可见
+
+Flush：执行一个提交并且截断 translog 的行为在 Elasticsearch 被称作一次 flush，30分钟一次。
+Flush之后段被全量提交，并且事务日志被清空
+
+减少段的数量（通常减少到一个），来提升搜索性能。
+
+结构化搜索：要么在，要么不在，和打分机制无关系。也就是和相似度无关。
+
+精确值查找时候，需要用filter，不会被打分，会被缓存。
+
+尽可能多的使用过滤式查询。
+
+constant_score(常量评分查询) 将 term 查询转化成为过滤器。
+
+term查询转成constant_score查询。（非评分查询）
+
+非评分计算是首先执行的，这将有助于写出高效又快速的搜索请求。
+
+bool过滤器，也叫复合过滤器。
+
+查看索引别名：GET /finance_netease_settle_order/_alias
+
+布尔过滤器可以用来作为构造复杂逻辑条件的基本构建模块。
+
+term 和 terms 是 包含（contains） 操作，而非 等值（equals）
+
+查询优化：普通查询 -> bool filter -> constant_score filter
+
+exists(!=null),missing(==null)查询
+
+filter query 实现bitset的roraing bitmap
 
 
 

@@ -16,5 +16,6 @@ https://www.elastic.co/guide/en/elasticsearch/reference/8.0/modules-discovery-vo
 https://www.elastic.co/guide/en/elasticsearch/reference/8.0/high-availability-cluster-design-large-clusters.html
 https://www.elastic.co/guide/en/elasticsearch/reference/8.0/high-availability-cluster-small-clusters.html
 
-
+CouchDB:
+https://guide.couchdb.org/editions/1/en/conflicts.html
  

@@ -13,7 +13,7 @@ Hashicorp：delivers consistent workflows to provision, secure, connect, and run
 
 线上容器里面是怎么连上的consul？
 
-consul使用模式？线上部署模式？教务三个node，service全部在node上，其他的node就是service.
+consul使用模式？线上部署模式？教务总共三个node，service全部在node上，其他电商的node就是service.
 
 service -> consul client(3 pod) -> consul server()
 
@@ -28,6 +28,7 @@ Consul Agent，Server，Client，Consul cluster，
 
 [serf](https://www.serf.io/)
 
+https://github.com/Ecwid/consul-api
 
 ## Paper
 
