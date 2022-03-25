@@ -42,3 +42,8 @@ foreword—functional and reactive domain modeling - 《函数响应式领域建
 Readlist:
 http://jonasboner.com/books-that-makes-you-think/
 
+
+## My Repo
+
+https://github.com/xiaozhiliaoo/akka-in-action.git
+
