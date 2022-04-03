@@ -7,7 +7,7 @@ SpringApplication
 SpringApplicationBuilder 
 BootstrapConfiguration
 
-DiscoveryClient
+DiscoveryClient 
 ServiceRegistry 
 LoadBalancerClient
 
@@ -29,4 +29,9 @@ common里面提供的接口，并没有提供实现，而spring cloud loadbalanc
 service discovery/register 实现：consul,zk,eureka
 load balancing 实现：spring cloud loadbalance
 circuit breaker实现：Resilience4J，Sentinel，Spring Retry(Spring Cloud Circuit Breaker)
+
+一些新的endpoint,引入了spring-boot-actuator，refresh，restart，pause，env
+
+Refresh入口类是：RefreshEndpoint，RefreshScope实现了GenericScope，GenericScope实现了Scope类，
+也就是@RefreshScope是@Scope("refresh")
 

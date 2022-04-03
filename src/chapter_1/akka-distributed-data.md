@@ -13,6 +13,7 @@ akka生态至少把akka项目看完，lightbend生态
 
 convergent(收敛)
 
+集群中节点间复制简单的会话信息。ORSet Observer Remove Set
 
 
 ## Related

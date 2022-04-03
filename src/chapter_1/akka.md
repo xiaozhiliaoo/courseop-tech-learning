@@ -20,6 +20,7 @@ unresponsive software
  
 Lightbend=Akka+Play+Lagom
 
+akka监控：https://www.lightbend.com/blog/akka-monitoring-telemetry
 
 
 ## 其他
@@ -47,3 +48,12 @@ http://jonasboner.com/books-that-makes-you-think/
 
 https://github.com/xiaozhiliaoo/akka-in-action.git
 
+https://github.com/xiaozhiliaoo/akka-practice
+
+https://github.com/xiaozhiliaoo/learning-akka.git
+
+https://github.com/SalmaKhater/Learning-Akka 
+
+## 使用场景
+
+可扩展的分布式内存数据库

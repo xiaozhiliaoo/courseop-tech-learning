@@ -4,7 +4,18 @@
 
 优先看：https://academy.lightbend.com/
 
-其次：https://doc.akka.io/docs/akka/current/
+其次：classic: https://doc.akka.io/docs/akka/current/index-classic.html
+
+typed:https://doc.akka.io/docs/akka/current/
+
+API文档：https://doc.akka.io/api/
+JAPI：https://doc.akka.io/japi/akka/2.6/akka/actor/AbstractActor.html
+
+AKKA中文指南：https://www.bookstack.cn/read/guobinhit-akka-guide/711c3ba85a66f758.md
+
+http://jasonqu.github.io/akka-doc-cn/2.3.6/scala/book/index.html
+
+
 
 快速开始demo：https://developer.lightbend.com/start/?group=akka
 

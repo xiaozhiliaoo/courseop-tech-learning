@@ -4,8 +4,10 @@
 
 Inspired by [**lvt4j**](https://lvt4j.51vip.biz/confluence/#all-updates) and reference from.
 
-基础:通读官方文档
-提高:
+基础学习: 通读官方文档，熟悉API.
+
+拔高学习: 源码核心设计，接口，机制，流程，抽象等.
+
 
 ## 技术关键字
 
@@ -14,6 +16,19 @@ Akka:Reactive Architecture
 Kafka:Streaming Processing Platform
 
 SMACK:Spark/Mesos/Akka/Cassandra/Kafka
+
+## 学习进度
+
+| 技术   | 进度                                                         |
+| ------ | ------------------------------------------------------------ |
+| Akka   | https://doc.akka.io/docs/akka/current/mailboxes.html         |
+| Es     | https://www.elastic.co/guide/cn/elasticsearch/guide/current/full-text-search.html |
+| Kafka  | https://developer.confluent.io/patterns/                     |
+| Spring | https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-factory-autowire |
+
+
+
+
 
 
 

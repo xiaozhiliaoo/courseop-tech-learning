@@ -129,6 +129,84 @@ exists(!=null),missing(==null)查询
 
 filter query 实现bitset的roraing bitmap
 
+bool match查询
+
+多数字符串字段都是 not_analyzed 精确值字段
+
+dfs_query_then_fetch： dfs是指分布式频率搜索（Distributed Frequency Search） ， 它告诉 Elasticsearch ，
+先分别获得每个分片本地的 IDF ，然后根据结果再计算整个索引的全局 IDF 。
+
+多字段搜索：bool match查询
+
+dis_max：分离最大化查询（Disjunction Max Query)
+
+全文搜索被称作是 召回率（Recall） 与 精确率（Precision） 的战场
+召回率 ——返回所有的相关文档； 
+精确率 ——不返回无关文档
+
+TF/IDF
+
+字段中心式（term-centric）查询：best_fields 和 most_fields
+词中心式（term-centric）的查询：cross_fields
+
+自定义单字段查询是否能够优于多字段查询，取决于在多字段查询与单字段自定义 _all 之间代价的权衡，
+即哪种解决方案会带来更大的性能优化就选择哪一种。
+
+multi_match 查询中避免使用 not_analyzed 字段。
+
+短语匹配(match_phrase查询)
+
+http://people.apache.org/~mikemccand/lucenebench/
+
+unigrams ,bigrams(shingles)，trigrams，
+
+shingles 不仅比短语查询更灵活，而且性能也更好。 shingles 查询跟一个简单的 match 查询一样高效，而不用每次搜索花费短语查询的代价。
+
+prefix 查询不做相关度评分计算，它只是将所有匹配的文档返回，并为每条结果赋予评分值 1 。它的行为更像是过滤器而不是查询。
+
+search-as-you-type：match_phrase_prefix
+
+Boolean Model:只是在查询中使用 AND 、 OR 和 NOT
+
+Lucene 使用 布尔模型（Boolean model） 、 TF/IDF 以及 向量空间模型（vector space model） ，然后将它们组合到单个高效的包里以收集匹配文档并进行评分计算。
+
+bool 查询实现了布尔模型
+
+查询时的权重提升 是可以用来影响相关度的主要工具
+
+constant_score 和 function_score区别？
+
+一致随机评分（consistently random scoring） 
+
+similarity算法：BM25，TF-IDF
+
+全文搜索是一场 查准率 与 查全率 之间的较量—查准率即尽量返回较少的无关文档，而查全率则尽量返回较多的相关文档。
+
+es多字段，可对字段建立两次索引。文本做两次索引
+
+stem 词干 stemmer  词干提取器
+
+多语言设计：index-per-language， field-per-language 
+
+Elasticsearch 为什么不能在 analyzed （分析过）的字符串字段上排序，并演示了如何为同一个域创建 复数域索引 ，
+其中analyzed域用来搜索，not_analyzed域用来排序。
+
+Analyzed 域无法排序并不是因为使用了分析器，而是因为分析器将字符串拆分成了很多词汇单元，就像一个 词汇袋 ，
+所以 Elasticsearch 不知道使用那一个词汇单元排序。
+
+analyzed name域用来搜索。
+not_analyzed name.raw 域用来排序。
+
+International Components for Unicode (ICU) 
+
+单词还原成词根。比如foxes还原成fox.
+
+
+
+
+
+
+
 
 
 
@@ -151,4 +229,6 @@ https://www.elastic.co/blog/found-elasticsearch-networking
 ## Course
 
 https://github.com/xiaozhiliaoo/geektime-ELK
+
+https://github.com/xiaozhiliaoo/search-practice
 
