@@ -18,4 +18,6 @@ https://www.elastic.co/guide/en/elasticsearch/reference/8.0/high-availability-cl
 
 CouchDB:
 https://guide.couchdb.org/editions/1/en/conflicts.html
- 
+
+rabbitmq:
+https://www.rabbitmq.com/partitions.html

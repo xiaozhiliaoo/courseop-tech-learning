@@ -1,5 +1,12 @@
 # Akka Actor
 
+## Progress
+
+
+
+
+## Notes
+
 tell,do not ask!
 
 发消息方法：
@@ -28,3 +35,9 @@ Sender -> Command -> Actor -> Event -> DB
 Send messages：Tell:fire-forget,Ask:Send-And-Receive-Future
 
 Forward message: useful when writing actors that work as routers, load-balancers, replicators etc.
+
+
+
+## Reference
+
+https://doc.akka.io/docs/akka/current/actors.html#actor-lifecycle

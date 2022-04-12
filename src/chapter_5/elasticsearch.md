@@ -4,7 +4,7 @@
 
 ## 学习进度
 
-看到这里了：https://www.elastic.co/guide/cn/elasticsearch/guide/current/full-text-search.html
+看到这里了：https://www.elastic.co/guide/cn/elasticsearch/guide/current/_preventing_combinatorial_explosions.html
 
 
 ## 笔记
