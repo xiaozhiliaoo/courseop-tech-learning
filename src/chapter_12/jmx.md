@@ -19,3 +19,17 @@ https://docs.spring.io/spring-framework/docs/current/reference/html/integration.
 https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.jmx
 
 https://codecentric.github.io/spring-boot-admin/2.5.1/#jmx-bean-management
+
+
+# JDK自带的MBean
+
+java.lang.management
+
+BufferPoolMXBean
+ClassLoadingMXBean
+CompilationMXBean
+GarbageCollectorMXBean
+MemoryMXBean
+OperatingSystemMXBean
+RuntimeMXBean
+ThreadMXBean
