@@ -2,15 +2,15 @@
 
 ## Admin
 
-```
+
 cqlsh node
 
 nodetool -h host -p port describecluster
-```
+
 
 ## 应用表
 
-```CQL
+
 查看所有命令: HELP;
 
 查看集群信息(没选keyspace)：DESCRIBE CLUSTER ;
@@ -52,14 +52,16 @@ nodetool -h host -p port describecluster
 删除行：DELETE FROM tableName WHERE columnName2='';
 
 总数：select count(*) from tableName;
-```
+
 
 ## 系统表
 
-```CQL
+
 select broadcast_address from system.local;
 
 select peer,rack,rpc_address from system.peers;
 
 select keyspace_name,columnfamily,generation from system.sstable_activity;
-```
+
+查找repair记录：select keyspace_name,columnfamily_name,exception_message from system_distributed.repair_history ;
+
