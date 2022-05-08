@@ -10,23 +10,16 @@
 
 ## 内容简介
 
-
-
 ## 内容列表
-
 
 ### 集群基本概念(概念本身和AKKA特有的概念，成员状态，集群演示)
 
-Cluster API Extension:Joining and Leaving a Cluster,Cluster Subscriptions,Cluster State
-Cluster Membership API:Joining,Leaving,Downing
-Node Roles:
+Cluster API Extension:Joining and Leaving a Cluster,Cluster Subscriptions,Cluster State Cluster Membership API:
+Joining,Leaving,Downing Node Roles:
 Failure Detector:
-Test
-Configuration:
-Higher level Cluster tools:Cluster Singleton,Cluster Sharding,Distributed Data,Distributed Publish Subscribe,Cluster aware routers
-,Cluster across multiple data centers,Reliable Delivery
-
-
+Test Configuration:
+Higher level Cluster tools:Cluster Singleton,Cluster Sharding,Distributed Data,Distributed Publish Subscribe,Cluster
+aware routers ,Cluster across multiple data centers,Reliable Delivery
 
 ### 集群功能与模块（带演示集群状态变更和脑裂/集群案例）
 
@@ -41,10 +34,7 @@ Distributed Publish Subscribe:
 Akka Cluster provides a fault-tolerant decentralized peer-to-peer based Cluster Membership Service with no single point
 of failure or single point of bottleneck. It does this using gossip protocols and an automatic failure detector.
 
-
 ### 集群使用场景-教务案例
-
-
 
 ### 源码速览
 
@@ -70,13 +60,11 @@ membership change:raft是配置,akka cluster是节点。
 
 membership（每个人知道全部节点）
 
-availability：membership,distributed data,PubSub，Multi-DC
-consistency: singletons,sharding,lease
+availability：membership,distributed data,PubSub，Multi-DC consistency: singletons,sharding,lease
 
 ### Classic Cluster和Typed Cluster的区别
 
 Reliable delivery
-
 
 ### Akka与应用架构
 
@@ -88,12 +76,12 @@ LAMP VS SMACK
 
 Akka Play Lagom
 
-
 ### 参考
 
 https://doc.akka.io/docs/akka/current/project/examples.html
 
-akka sbr(Akka Split Brain Resolver):https://www.lightbend.com/blog/lightbend-to-contribute-commercial-features-to-akka-open-source
+akka sbr(Akka Split Brain
+Resolver):https://www.lightbend.com/blog/lightbend-to-contribute-commercial-features-to-akka-open-source
 
 ### 实验
 
@@ -103,9 +91,3 @@ sh akka cluster start
 sh akka node stop 9
 
 sh akka node down 8
-
-
-
-
-
-集群状态变更：

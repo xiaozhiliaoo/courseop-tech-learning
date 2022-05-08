@@ -22,7 +22,7 @@ compaction类型minor，major，user defined，scrub 和策略：STCS，LCS，TW
 
 数据时间 ttl
 
-cassandra datastax driver三种模式：statement，mapper，accessor
+cassandra datastax driver三种模式：statement，mapper，accessor + spring data cassandra
 
 column families 也叫 tables
 
@@ -37,6 +37,18 @@ gc_grace_seconds=10d
 ### hints
 
 max_hint_windowin_ms=3h
+
+## 常见错误
+
+1. [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."。
+
+   order by 操作必须在分区key是 == 或者 in的时候下才可以使用
+
+
+2. [Invalid query] message="Order by currently only support the ordering of columns following their declared order in
+   the PRIMARY KEY"。
+
+   	orderby必须是主键指定的顺序。
 
 # 参考
 
@@ -53,3 +65,4 @@ scylladb:C++写的cassandra.  https://www.scylladb.com/resources/introduction-to
 ## paper
 
 Backup and Recovery Mechanisms of Cassandra Database: A Review
+

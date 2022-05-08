@@ -15,8 +15,6 @@ AKKA中文指南：https://www.bookstack.cn/read/guobinhit-akka-guide/711c3ba85a
 
 http://jasonqu.github.io/akka-doc-cn/2.3.6/scala/book/index.html
 
-
-
 快速开始demo：https://developer.lightbend.com/start/?group=akka
 
 代码示例：https://github.com/akka/akka-samples
@@ -56,11 +54,9 @@ EBOOK: https://www.lightbend.com/akka-platform/resources
 
 优先看：https://training.hazelcast.com/
 
-官方文档IMDG https://hazelcast.org/imdg/docs/
+Hazelcast文档：https://docs.hazelcast.com/hazelcast/5.1/
 
-https://docs.hazelcast.com/imdg/latest/getting-started.html
-
-hazelcast文档：https://docs.hazelcast.com/hazelcast/5.1/
+IMDG文档： https://docs.hazelcast.com/imdg/latest/getting-started.html
 
 hazelcast mc文档：https://docs.hazelcast.com/management-center/latest/getting-started/overview
 
@@ -70,11 +66,7 @@ https://github.com/hazelcast/hazelcast/wiki
 
 Quick Start：https://hazelcast.org/imdg/?samplelang=Java+Member&sampleindex=0
 
-Mastering Hazelcast https://odoepner.files.wordpress.com/2015/04/mastering_hazelcast1.pdf
-
-最新版本：https://hazelcast.com/resources/mastering-hazelcast/
-
-官方文档PDF    https://docs.hazelcast.org/docs/4.0.1/manual/pdf/index.pdf
+Mastering Hazelcast：https://hazelcast.com/resources/mastering-hazelcast/
 
 # Jackson
 
