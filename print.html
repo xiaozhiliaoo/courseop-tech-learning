@@ -340,6 +340,9 @@ at the edge or as a fully managed cloud service.</p>
 <h1 id="学习进度-2"><a class="header" href="#学习进度-2">学习进度</a></h1>
 <h1 id="提供的新架构解决方案-2"><a class="header" href="#提供的新架构解决方案-2">提供的新架构，解决方案</a></h1>
 <h1 id="笔记-1"><a class="header" href="#笔记-1">笔记</a></h1>
+<p>cache, distributed lock, key-value store, pub/sub, computing platform,</p>
+<p>cache pattern: https://hazelcast.com/blog/a-hitchhikers-guide-to-caching-patterns/
+cache read-through MapLoader write-through MapStore Write-Behind write-delay-seconds</p>
 <p>内存计算大图：数仓方向Databend，apache arrow，Hadoop-&gt;Spark,HDFS-&gt;Alluxio,Arrow,HANA,HazelCast, Redis,VoltDB 这些技术的关系。IMDG到底是什么？</p>
 <p>内存计算的含义是：IMDG+JET</p>
 <p>Apache Beam和Jet组合起来？</p>
@@ -359,9 +362,47 @@ strong consistency but monotonic reads guarantee, anti-entropy,at-least-once, CP
 <h2 id="jet"><a class="header" href="#jet">Jet</a></h2>
 <p>Hazelcast Jet no dependency on disk storage, it keeps all of its operational state in the RAM of the cluster</p>
 <h2 id="竞品"><a class="header" href="#竞品">竞品</a></h2>
+<p>HZ的AP需要结合复制，一致性，选举去理解。而CP则需要结合线性一致性，共识去理解。</p>
 <p>https://www.gartner.com/reviews/market/in-memory-data-grids</p>
-<p>Apache Ignite，Pivotal Gemfire，Terracotta BigMemory，JBoss Data Grid，GigaSpaces，Oracle Coherence SAP HANA？timesten</p>
+<p>对比：https://hazelcast.com/resources/#topic=competitive
+Apache Ignite，Pivotal Gemfire，Terracotta BigMemory，JBoss Data Grid，GigaSpaces，Oracle Coherence SAP HANA？timesten</p>
+<p>https://www.oracle.com/java/coherence/</p>
 <p>an alternative to Coherence and Terracotta</p>
+<p>Distributed Snapshots: Chandy-Lamport algorithm JET using it?</p>
+<p>讲座：https://hazelcast.com/blog/tech-talk-series/</p>
+<p>hz和beam结合例子：https://hazelcast.com/blog/running-apache-beam-on-hazelcast-jet/</p>
+<p>Testing the CP Subsystem with Jepsen：https://hazelcast.com/blog/testing-the-cp-subsystem-with-jepsen/
+linearizable</p>
+<p>CP：https://hazelcast.com/blog/author/ensarbasri/</p>
+<p>https://github.com/jepsen-io/jepsen/tree/main/hazelcast</p>
+<p>CP group Each CP group executes the Raft consensus algorithm independently</p>
+<p>Beam缩写：Batch + strEAM</p>
+<p>SQL基于calcite解析。</p>
+<p>API文档：https://docs.hazelcast.org/docs/4.2.5/javadoc/，其中关于FencedLock很有意思。</p>
+<p>缓存选择：IMap还是ReplicatedMap？为什么ReplicatedMap没有MapLoader和MapStore接口？</p>
+<p>IMap+Near Cache</p>
+<p>Replicated Map：anti-entropy update operations to all members in the cluster eventually consistent system with
+read-your-writes and monotonic-reads consistency</p>
+<p>Replicated Map：Mutli-Master IMap：Single Master</p>
+<p>Akka的AP提供的是CRDT，HZ的AP提供的是数据结构。</p>
+<p>AP数据结构，意味着线性一致性。意味着不一致就不可用。</p>
+<p>分布式锁在CP意味着什么？AP意味着什么？这里的强一致性并不是数据。</p>
+<p>HZ是PACELC种PA，EC完美案例。</p>
+<p>(必读Daniel Abadi文章)Hazelcast和神话般的PA/EC系统：http://dbmsmusings.blogspot.com/2017/10/hazelcast-and-mythical-paec-system.html</p>
+<p>PA/EC:系统的基本问题如下：尽管分区是一个罕见的事件，但它们并非不可能。任何建立在PA系统之上的应用都必须有相应的机制来处理这些分区事件中出 现的不一致。但是，一旦他们有了这些机制，为什么不在正常运行期间受益，并获得更好的延时呢？</p>
+<p>https://en.wikipedia.org/wiki/PACELC_theorem</p>
+<p>IAtomicLong的(incrementAndGet,compareAndSet )意味着分布式的compare-and-set。单机原子变量实现很复杂了。CAS操作。意味着共识。那意味着CAS可以实现非阻塞的锁。
+那么为什么不能实现并发的强一致性MAP/LIST？参考juc思路。</p>
+<p>AP数据结构并不依赖共识。</p>
+<p>如何实现线性化的compareAndSet与全序关系广播等价于共识问题。</p>
+<p>HZ的CP官方说是线性一致性。</p>
+<p>HZ AP复制模型。primary-backup.primary挂了，怎么选举primary？leader选举不一定需要共识。</p>
+<p>CP Subsystem：Unsafe mode，CP group，CP member，</p>
+<p>Akka无主，实现了集群单例，主节点选举。</p>
+<p>选举不一定需要共识，虽然表面看是对某些事情达成一致。</p>
+<p>主节点选举，集群单例，分布式锁，分布式事务与共识关系。</p>
+<p>分布式互斥与共识算法。共识和线性化有关系，但是分布式系统在不保证线性化时候，共识并不是必须的。</p>
+<p>共识可以解决选主，原子提交，互斥。但是选主，原子提交，选主不一定是共识。</p>
 <h2 id="starter"><a class="header" href="#starter">Starter</a></h2>
 <p>https://docs.hazelcast.com/hazelcast/5.1/pipelines/spring-boot</p>
 <h1 id="参考"><a class="header" href="#参考">参考</a></h1>
