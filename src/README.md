@@ -1,6 +1,6 @@
 # 简介
 
-我的技术笔记
+我的技术笔记 Github地址：https://github.com/xiaozhiliaoo/courseop-tech-learning
 
 Inspired by [**lvt4j**](https://lvt4j.51vip.biz/confluence/#all-updates) and reference from.
 

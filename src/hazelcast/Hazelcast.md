@@ -77,7 +77,9 @@ hz和beam结合例子：https://hazelcast.com/blog/running-apache-beam-on-hazelc
 Testing the CP Subsystem with Jepsen：https://hazelcast.com/blog/testing-the-cp-subsystem-with-jepsen/
 linearizable
 
-Linearizable：单机jmm实现不了顺序一致性 采取了happen before一致性。为什么在分布式里面就能实现比顺序一致性高的线性一致性呢？（也许这是一个错误的问题）而raft是如何基于共识协议实现了线性一致性呢？
+问：Linearizable：单机jmm实现不了顺序一致性 采取了happen before一致性。为什么在分布式里面就能实现比顺序一致性高的线性一致性呢？（也许这是一个错误的问题）而raft是如何基于共识协议实现了线性一致性呢？
+答：因为满足happen-before的属性是可线性化的，全序的，所有线程遵守约定次序。单锁保护对象读写都是可线性化的，
+Java内存模型满足松弛内存模型的基本特性：如果程序的顺序一致性满足某些规则，那么该程序的所有执行在松弛内存模型仍然是顺序一致的。
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#Weakly
 
