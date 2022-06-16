@@ -47,6 +47,10 @@ Core Object：Config,DistributedObject,Node,NodeState,Cluster,HazelcastInstance
 
 FD:PhiAccrualFailureDetector,PhiAccrualClusterFailureDetector,DeadlineClusterFailureDetector,PingFailureDetector
 
+自定义对象：common infrastructure
+
+simple data grid -> data grid infrastructure
+
 ## Jet
 
 Hazelcast Jet no dependency on disk storage, it keeps all of its operational state in the RAM of the cluster
@@ -73,6 +77,35 @@ hz和beam结合例子：https://hazelcast.com/blog/running-apache-beam-on-hazelc
 Testing the CP Subsystem with Jepsen：https://hazelcast.com/blog/testing-the-cp-subsystem-with-jepsen/
 linearizable
 
+Linearizable：单机jmm实现不了顺序一致性 采取了happen before一致性。为什么在分布式里面就能实现比顺序一致性高的线性一致性呢？（也许这是一个错误的问题）而raft是如何基于共识协议实现了线性一致性呢？
+
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#Weakly
+
+假设Lock基于AQS，非阻塞同步，CAS，乐观并发。
+
+CHashMap，单机不能实现强一致性(put完get肯定是最新的)。分布式也更加实现不了，如果实现了。
+
+
+ConcurrentHashMap：Weak Consistency，单机的能保证read your write，但是能保证read others write吗？
+
+jmm的happen-before：满足条件的是部分操作，而顺序一致性是所有操作。分布式系统里面，并没有定义哪些操作是happen before。如果定义了，那么等价于分布式的强一致性的Map。这里强
+一致性是部分操作，不是所有操作。我在单机执行Map操作，然后复制结果到其他节点，完事。如果是CP的，那么Map每个操作都要强一致性的话，会很复杂。
+
+如果是分布式的Map，意味着锁住整个Map，SynchronizedMap。并发集合是线程安全的，但不受单个互斥锁的控制。单个锁阻止对集合的所有访问时，“同步”类可能很有用。
+Map的一致性性，操作非常多，不仅仅是put，get，还有size，isEmpty,containValue,迭代等功能。满足这些操作的全部强一致，代价较高。
+
+K1=4
+线程A：put(K1=6) get(K1)，线程B：get(K1) put(K1=5), 没有同步情况下，B: get(K1)是可能获取到A的值。为什么并发Map不会导致脏读？
+经过一段时间，K1的值是多少？
+
+
+用底层不可靠机制实现了上层可靠机制。底层jmm happen before，但是上层happen before可以实现强一致性。
+
+指令重排序，类似于消息乱序。
+
+https://curator.apache.org/curator-recipes/index.html
+
+
 CP：https://hazelcast.com/blog/author/ensarbasri/
 
 https://github.com/jepsen-io/jepsen/tree/main/hazelcast
@@ -86,6 +119,9 @@ SQL基于calcite解析。
 API文档：https://docs.hazelcast.org/docs/4.2.5/javadoc/，其中关于FencedLock很有意思。
 
 缓存选择：IMap还是ReplicatedMap？为什么ReplicatedMap没有MapLoader和MapStore接口？
+缓存选择：IMap还是ICache？ ICache优于IMap，IMap过期策略很少，ICache API供应商独立，可以替换缓存实现，更符合缓存，IMap好像ConcurrentHashMap，ICache类似于LoadingCache.
+
+
 
 IMap+Near Cache
 
@@ -131,7 +167,66 @@ Akka无主，实现了集群单例，主节点选举。
 
 共识可以解决选主，原子提交，互斥。但是选主，原子提交，选主不一定是共识。
 
+//Distributed Lock hzMap.lock("Peter"); 和 FenceLock区别？
 
+### core class
+node:Hazelcast member:HazelcastInstance
+
+CPSubsystem,CPMember,CPGroup,CPSession   RaftService
+【each CP member can participate to more than one CP group】
+
+hz的cp到底和raft区别在哪里？多了哪些？
+
+HZ的分布性特性，除了CAP抉择外，还需要满足正确性，如单机线程安全(去哪里了？是否还存在？)，单机数据结构正确性(默认正确)，分布式数据结构的正确性（保持疑问），比如Queue顺序，Set的唯一性，List下标，Topic的消息语义，数据一致。
+数据结构的正确性，hashCode，equals，并发实现等等细节。理解部分简单，理解部分复杂，学习和理解都不难，但是难在证明是对的。你能想到很多问题，但是很难精确解答，因为你很难精确证明。为什么不需要证明系统还在运行？
+因为经验主义。而不是科学主义。但是关键的点需要理解清楚：官方如文档提到的。需要收集各种信息来完善认识。了解越多越好是良好工程的基础。
+
+分布式系统，节点变更对系统影响。很难说清楚，因为系统文档不全，相信但怀疑。
+
+复制是如何保证不乱序的？
+
+单机 List，Set，Map不线程安全时会发生什么？
+
+顺序一致性。它太严格了，不适合做 Java 内存模型，因为它 禁止了标准的编译器和处理器优化。这一节将回顾下顺序一致性，然后展示另一个 模型，称作 happens-before 内存模型。
+
+Hazelcast is a java library to create distributed applications
+
+Java Memory Consistency with happens-before。
+
+JMM可见性和ACID隔离性有点类似。
+
+分布式系统和单机并行系统一致性表达同样的事物，只是操作或者适合级别不一样。先说单机一致性，再说分布式系统一致性。（和Replicate有关，但是不绝对，如共享存储）
+Java并发：A（原子性）V（可见性）O（顺序性） 指令重排，类似于命令重排。AVO是JMM在happen-before一致性模型下的特点。
+数据库：ACID（隔离性-可见性）
+分布式：CAP（一致性-可见性）
+
+复制，一致性，共识关系是什么？
+一致性协议有哪些？Continuous，Primary-based，Remote-write protocols，Replicated-write protocols，
+memory consistency and cache coherency.
+
+先说单机并发的一致性，再说分布式系统的一致性。
+如何让JUC变成分布式结构？HZ的原子变量/锁和JUC区别？
+https://en.wikipedia.org/wiki/Consistency_model
+https://en.wikipedia.org/wiki/MESI_protocol
+https://en.wikipedia.org/wiki/Consistency_(database_systems) 【Consistency (or Correctness) 】
+https://en.wikipedia.org/wiki/Linearizability
+https://en.wikipedia.org/wiki/Sequential_consistency
+https://en.wikipedia.org/wiki/Cache_coherence （缓存一致性）
+https://en.wikipedia.org/wiki/Data_consistency
+https://en.wikipedia.org/wiki/Consensus_(computer_science)
+工程里面缓存一致性，是数据一致性。
+
+Consistency and replication（多份数据的一致性）以及单一共享数据的一致性。
+
+Expire(time:access or last write) and Evict(size：LRU,LFU),最近虽然是时间概念，但是淘汰的是size。
+Caffenie:size-based eviction,time-based expiration 
+
+缓存淘汰：eviction(LRU LFU，很多key淘汰哪些，选择淘汰哪些是不确定的，全局配置)
+缓存过期：expiration(单个key，淘汰是确定的)
+
+我们在应用层很少谈论一个并发Map的一致性，因为JMM做了假设，是happen-before原则。
+
+IMap和ICache区别？
 
 
 ## Starter
@@ -161,3 +256,12 @@ https://github.com/xiaozhiliaoo/hazelcast-practice
 Redis和Hazelcast对比：https://hazelcast.com/compare-with-redis/
 
 Jet和Spark对比：https://hazelcast.com/blog/how-hazelcast-jet-compares-to-apache-spark/
+
+## 人物
+
+Greg Luck Hz CTO ( *https://hazelcast.com/blog/author/gregluck/* ) jsr107作者  https://github.com/gregrluck
+
+Greg Luck is a leading technology entrepreneur with more than 15 years of experience in high-performance in-memory computing. He is the founder and inventor of Ehcache, a widely used open source Java distributed cache that was acquired by Software AG (Terracotta) in 2009, where he served as CTO. Prior to that, Greg was the Chief Architect at Australian start-up Wotif.com that went public on the Australian Stock Exchange (ASX:WTF) in 2006. Greg is a current member of the Java Community Process (JCP) Executive Committee, and since 2007 has been the Specification Lead for JSR 107 (Java Specification Requests) JCACHE. Greg has a master's degree in Information Technology from Queensland University of Technology and a Bachelor of Commerce from the University of Queensland.
+
+
+
