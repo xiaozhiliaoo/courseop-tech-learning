@@ -307,6 +307,27 @@ order and converge to the same state with the primary.
 
 MySQL复制是slave读取masterbinlog然后放在中继日志里面。
 
+复制，分布式互斥，分布式数据结构，分布式选举，这些问题，可以单独解决，也可以先构建一个共识协议，来解决这些问题。基于共识解决是有限制的。比如redis分布式锁是基于redis去实现的，
+本身和分布式共识没关系，但是可以基于共识去实现分布式锁。 这就是redis，zk，etcd，hz的分布式锁/barrier/countdownlatch的区别。但是用共识解决这些问题，
+会导致一些限制，如写不能太多，数据不能太大，必须强一致性，不能性能瓶颈。 分布式数据结构里面的hz ap，以及redis reddsion存储能力大于zk的队列存储。需要一致性的，互斥的尽量是
+共识解决，不需要的可以不借助共识实现。kafka的数据复制和zk分开的(分区管理,元信息等).zk的分布式数据存的是配置或者参数之类的，而不是一个数据存储系统。
+
+akka，gossip
+consul client(gossip)+server(raft)
+
+##### kv（https://db-engines.com/en/ranking/key-value+store）
+
+1.Riak, Redis and Voldermort
+2.etcd/consul/zk/
+3.leveldb/rocksdb/mapdb
+
+AP是舍弃了线性一致性，获得了高可用，但是一致性模型，在jepsen中是什么呢？(Causal Consistency/RYW/Session/Monotonic Read/Write)
+
+Quroumn策略：W+R<=N，属于weak/eventual consistency
+W+R>N,强一致性，但是可用性下降，写入少于W，系统就不可用了。
+
+kafka复制和kraft没关系。也不借助zk。一个系统用了raft看主要解决了什么问题？raft虽然有复制，但是系统数据一般不会用。
+
 
 ## Starter
 
