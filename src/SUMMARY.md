@@ -129,6 +129,7 @@
     - [ResiliencyPatterns](research/ResiliencyPatterns.md)
     - [ServiceRegistry](research/ServiceRegistry.md)
     - [Person](research/Person.md)
+    - [2021](research/2021.md)
 - [技术分享](./tech-sharing/toc.md)
     - [Akka Classic Cluster](./tech-sharing/Akka-Classic-Cluster.md)
 - [对话平台技术](./dialogue-tech/toc.md)
