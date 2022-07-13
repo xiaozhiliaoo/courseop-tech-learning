@@ -110,6 +110,7 @@
     - [Cassandra](database/cassandra/toc.md)
         - [常用命令](database/cassandra/cmd.md)
         - [Cassandra](database/cassandra/cassandra.md)
+        - [Data Access](database/cassandra/data-access.md)
 - [运维](operation/toc.md)
     - [Tracing](operation/Tracing.md)
     - [Monitoring](operation/Monitoring.md)

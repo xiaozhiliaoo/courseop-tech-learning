@@ -4,6 +4,16 @@
 
 # 笔记
 
+cassandra是宽列行存储引擎。数据模型是列存（[Wide Column Stores](https://en.wikipedia.org/wiki/Wide-column_store) ），但是磁盘是行存。hbase和bigtable也是。[面向列](https://en.wikipedia.org/wiki/Column-oriented_DBMS) 的磁盘存储一般在数仓较多，如clickhouse，druid，greenplum，还有关系型分为行存和列存。
+
+https://en.wikipedia.org/wiki/List_of_column-oriented_DBMSes
+
+Apache Parquet is an open source, column-oriented data file format designed for efficient data storage and retrieval
+
+TiDB（行存） TiFlash（列存）
+
+OLTP（行存） OLAP（列存）
+
 先读bigtable(2006)，dynamo(2007)，cassandra(2009)的paper.
 
 范式：one table serve many queries 反范式：one table serve one query
@@ -28,6 +38,8 @@ column families 也叫 tables
 
 副本修复方式：read repair,hinted handoff
 
+计数器可以有多个counter，但是不能出现非主键key。
+
 ## 运维
 
 ### compaction
@@ -45,10 +57,19 @@ max_hint_windowin_ms=3h
    order by 操作必须在分区key是 == 或者 in的时候下才可以使用
 
 
-2. [Invalid query] message="Order by currently only support the ordering of columns following their declared order in
-   the PRIMARY KEY"。
-
+2. [Invalid query] message="Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY"。
+   
    	orderby必须是主键指定的顺序。
+   
+3. InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot rename non PRIMARY KEY part createtime"。
+
+4. InvalidRequest: Error from server: code=2200 [Invalid query] message="Invalid operation (studytimechange = studytimechange + 1000) for non counter column studytimechange"
+
+5. InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"。
+
+6. 
+
+
 
 # 参考
 
