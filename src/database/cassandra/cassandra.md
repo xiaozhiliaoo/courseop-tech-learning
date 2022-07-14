@@ -54,20 +54,24 @@ max_hint_windowin_ms=3h
 
 1. [Invalid query] message="ORDER BY is only supported when the partition key is restricted by an EQ or an IN."。
 
-   order by 操作必须在分区key是 == 或者 in的时候下才可以使用
+   **order by 操作必须在分区key是 == 或者 in的时候下才可以使用。不能排序分区键，因为需要遍历所有分片。**
 
 
 2. [Invalid query] message="Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY"。
    
-   	orderby必须是主键指定的顺序。
+   **orderby必须是主键指定的顺序。**
    
 3. InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot rename non PRIMARY KEY part createtime"。
+   **不能重命名非PRIMARY KEY**。
 
 4. InvalidRequest: Error from server: code=2200 [Invalid query] message="Invalid operation (studytimechange = studytimechange + 1000) for non counter column studytimechange"
+   **累加操作必须在counter类型字段上面。**
 
 5. InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot mix counter and non counter columns in the same table"。
+   **计数器列可以多个，但是必须非主键之外所有键。**
 
-6. 
+6. InvalidRequest: Error from server: code=2200 [Invalid query] message="Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY"
+   **排序字段只能是PRIMARY KEY定义的顺序。**
 
 
 
