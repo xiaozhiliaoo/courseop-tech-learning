@@ -169,22 +169,28 @@
 <ol>
 <li>
 <p>[Invalid query] message=&quot;ORDER BY is only supported when the partition key is restricted by an EQ or an IN.&quot;。</p>
-<p>order by 操作必须在分区key是 == 或者 in的时候下才可以使用</p>
+<p><strong>order by 操作必须在分区key是 == 或者 in的时候下才可以使用。不能排序分区键，因为需要遍历所有分片。</strong></p>
 </li>
 <li>
 <p>[Invalid query] message=&quot;Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY&quot;。</p>
-<p>orderby必须是主键指定的顺序。</p>
+<p><strong>orderby必须是主键指定的顺序。</strong></p>
 </li>
 <li>
-<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Cannot rename non PRIMARY KEY part createtime&quot;。</p>
+<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Cannot rename non PRIMARY KEY part createtime&quot;。
+<strong>不能重命名非PRIMARY KEY</strong>。</p>
 </li>
 <li>
-<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Invalid operation (studytimechange = studytimechange + 1000) for non counter column studytimechange&quot;</p>
+<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Invalid operation (studytimechange = studytimechange + 1000) for non counter column studytimechange&quot;
+<strong>累加操作必须在counter类型字段上面。</strong></p>
 </li>
 <li>
-<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Cannot mix counter and non counter columns in the same table&quot;。</p>
+<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Cannot mix counter and non counter columns in the same table&quot;。
+<strong>计数器列可以多个，但是必须非主键之外所有键。</strong></p>
 </li>
-<li></li>
+<li>
+<p>InvalidRequest: Error from server: code=2200 [Invalid query] message=&quot;Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY&quot;
+<strong>排序字段只能是PRIMARY KEY定义的顺序。</strong></p>
+</li>
 </ol>
 <h1 id="参考"><a class="header" href="#参考">参考</a></h1>
 <p>dbdb.io: https://dbdb.io/db/cassandra</p>

@@ -140,6 +140,15 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="data-access"><a class="header" href="#data-access">Data Access</a></h1>
+<h2 id="存储层封装的演进"><a class="header" href="#存储层封装的演进">存储层封装的演进</a></h2>
+<p>JDBC-&gt;commons-dbutils-&gt;Template-&gt;ORM(MyBatis)-&gt;Spring Data  每一次演进的本质区别是什么。</p>
+<h2 id="为什么要有common-cassandra"><a class="header" href="#为什么要有common-cassandra">为什么要有common-cassandra</a></h2>
+<p>assandra datastax driver有三种模式：statement，mapper，accessor，spring data cassandra</p>
+<p>开源的很好，但是很复杂，学习成本很高。开发只能记住最简单的使用。</p>
+<h2 id="功能"><a class="header" href="#功能">功能</a></h2>
+<p>支持直接注入@Autowired Accessor(启动时候引入@Accessor)</p>
+<p>加了些配置。和方便开发使用。”没有新加机制“。</p>
+<p>新的机制。</p>
 
                     </main>
 
