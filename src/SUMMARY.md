@@ -111,6 +111,8 @@
         - [常用命令](database/cassandra/cmd.md)
         - [Cassandra](database/cassandra/cassandra.md)
         - [Data Access](database/cassandra/data-access.md)
+        - [DataStax Academy DS201](database/cassandra/academy-basic.md)
+        - [DataStax Academy DS220](database/cassandra/academy-data-model.md)
 - [运维](operation/toc.md)
     - [Tracing](operation/Tracing.md)
     - [Monitoring](operation/Monitoring.md)

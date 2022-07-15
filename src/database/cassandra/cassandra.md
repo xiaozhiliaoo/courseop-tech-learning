@@ -72,6 +72,11 @@ max_hint_windowin_ms=3h
 
 6. InvalidRequest: Error from server: code=2200 [Invalid query] message="Order by currently only support the ordering of columns following their declared order in the PRIMARY KEY"
    **排序字段只能是PRIMARY KEY定义的顺序。**
+   
+7. InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING"。
+   **原来查询：select * from answers_by_user where courseid=1;**
+   **现有查询：select * from answers_by_user where courseid=1 allow filtering;**
+   **其他方法：change your data model  add an index, use another table  use ALLOW FILTERING**
 
 
 
